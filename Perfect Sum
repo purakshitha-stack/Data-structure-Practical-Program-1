@@ -1,0 +1,12 @@
+class Solution:
+    def perfectSum(self, arr, target):
+        n = len(arr)
+        
+        dp = [0] * (target + 1)
+        dp[0] = 1
+        
+        for num in arr:
+            for s in range(target, num - 1, -1):
+                dp[s] += dp[s - num]
+        
+        return dp[target]
